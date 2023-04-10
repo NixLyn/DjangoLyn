@@ -1,14 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NixLyn_Labs_HomePage</title>
-</head>
+
 <body>
-    <h1>
-        Welcome to NixLyn_Labs
-    </h1>
+    <section>
+        <h1>
+            Welcome to NixLyn_Labs
+        </h1>
+    </section>
+    <section>
+        <h1>NoticeBoard</h1>
+        <!-- USING JINJA -->
+        <ul style="background-color: chartreuse; padding: 10px 10px; margin: 10px 10px;">
+            {% for post in object_list %}
+            <!--  ! Using the Django version of Jinja  -->
+            <!--  ! We Have a potential Vulnerablity exploit -->
+            <!--  ! With the 'post.pk' being the primary_key -->
+            <a href="{% url 'article-details' post.pk %}">
+                <li>{{ post.title }}</li>
+                <li>{{ post.author }}</li>
+                <li>{{ post.body }}</li>
+                <br>
+            </a>
+            {% endfor %}
+        </ul>
+    </section>
 </body>
 </html>
