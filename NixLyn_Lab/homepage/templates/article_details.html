@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
 <link rel="stylesheet" href="../static/css/base.css"/>
 <link rel="stylesheet" href="../static/css/nav.css"/>
 <link rel="stylesheet" href="../static/css/detailed.css"/>
 
-{% block content %}
     <section class="all_back">
         <h1>
             Article Details
@@ -15,6 +18,8 @@
             <h2>{{ post.author.email }}</h2>
             <h3>{{ post.body }}</h3>
             <h4>{{ post.add_on }}</h4>
+            <h4>{{ post.color }}</h4>
+            <a href="{% url 'update_post' post.pk %}">Update</a>
         </div>
     </section>
 {% endblock %}

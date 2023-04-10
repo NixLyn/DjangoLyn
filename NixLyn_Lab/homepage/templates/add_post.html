@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Add Post{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="../static/css/base.css"/>
+<link rel="stylesheet" href="../static/css/nav.css"/>
+<link rel="stylesheet" href="../static/css/add_post.css"/>
+<link rel="stylesheet" href="../static/css/post_form.css"/>
+
+    <section class="all_back">
+        <h1>
+            Add NoticeBoard Post
+        </h1>
+        <div class="form-group">
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form_title">    {{ form.title }}    </div>
+                <div class="form_author">   {{ form.author }}   </div>
+                <div class="form_body">     {{ form.body }}     </div>
+                <div class="form_sidenote"> {{ form.add_on }} </div>
+                <div class="form_color">    {{ form.color }}    </div>
+                <button>Post</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

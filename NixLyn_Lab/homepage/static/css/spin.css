@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-image: url('../pics/pizza-1.jpg');
+	background-image: url('../pics/desk_2.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -86,7 +86,7 @@
 	position: absolute;
 	inset: 5px;
 	border-radius: 16px;
-	background-color: #303030;
+	background-color: #1f1f1f;
 	z-index: 2;
 	display: grid;
 	justify-content: center;

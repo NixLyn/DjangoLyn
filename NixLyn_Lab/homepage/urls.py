@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, ArticleDetailView
+from .views import HomeView, ArticleDetailView, AddPostView, UpdatePostView
 
 
 urlpatterns = [
@@ -8,4 +8,6 @@ urlpatterns = [
     # ? http://127.0.0.1:8000/article/1 
     # ! Meaning it is a potential Cyber Risk, for SQL_injections
     path('article/<int:pk>', ArticleDetailView.as_view(), name='article-details'),
+    path('add_post/', AddPostView.as_view(), name='add_post'),
+    path('update_post/<int:pk>', UpdatePostView.as_view(), name='update_post')
 ]
