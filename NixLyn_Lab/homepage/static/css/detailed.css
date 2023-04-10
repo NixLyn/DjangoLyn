@@ -1,0 +1,31 @@
+.all_back {
+    background-image: url('../pics/wood_1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 90vh;
+
+}
+
+.daBlock {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 90%;
+    background-color: rgba(187, 255, 0, 0.24);
+
+}
+
+.form-group *{
+    display: flex;
+    flex-direction: column;
+}
+
+.all-forms *{
+    display: block;
+    width: 80vw;
+}

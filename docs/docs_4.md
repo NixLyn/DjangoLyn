@@ -1,86 +1,94 @@
-## Let's Create an SQL datbase ##
+# Basic Base Layout #
 
-Since we have the login database already setup for /Admin
-we can simply migrate the app's configs with a simple command in the base directory
+In order to simplify things like universal NavBars,
+we use something known as {% extends 'base.html' %}
 
-```!/bin/bash
-python manage.py migrate
+
+## Design Tree ##
+
+Beside the templates folder, web designers often use the 'static' folder
+which contains something:
+
+```
+.
+├── css
+│   ├── base.css
+│   ├── homepage.css
+│   ├── nav.css
+├── images
+├── js
+│   ├── base.js
+└── pics
+    ├── picture_1.jpg
+    ├── picture_2.jpg
+    ├── picture_3.jpg
 ```
 
-It should respond with :
+This is a we structured way of keeping everything organized:
+(PS: never put any actual pictures in the 'images' folder.. that is for other things)
 
-<img src="pics_/Migrated.png">
+## Base.html ##
 
-## NoticeBoard DataBase ##
+in 'templates/base.html' create your base template, mine looks kind of like this:
 
-### Creating models ###
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/nav.css"/>
+    <link rel="stylesheet" href="../static/css/base.css"/>
+    <title>NixLyn_Labs</title>
+</head>
+<body>
+    <nav>
+        <div class="mNav">
+            <a href="../"><div class="logo">
+                <h1>NL</h1>
+            </div></a>
+            <div class="signing">
+                <div class="sign-in">
+                    <a>Sign_In</a>
+                </div>
+                <div class="sign-up">
+                    <a>Sign_In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    {% block content %}
 
-Now we’ll define your models – essentially, your database layout, with additional metadata.
-We are going to make two tables, one for posteing to the NoticeBoard, and one for adding 
-Questions to that post, and even 'Votes' so that we can see how many people have the same question...
-
-Now in our 'noticeBoard/models.py' let's add:
-
-```!/bin/bash
-from django.db import models
-
-# New Posts For the NoticeBoard
-class New_Posts(models.Model):
-    new_post_title  = models.CharField(max_length=200)
-    new_post_sum    = models.CharField(max_length=600)
-    pub_date        = models.DateTimeField("date published")
-
-# Responses on each New_Post
-class Choice(models.Model):
-    question        = models.ForeignKey(New_Posts, on_delete=models.CASCADE)
-    response_text   = models.CharField(max_length=500)
-    votes           = models.IntegerField(default=0)
+    {% endblock %}
+    
+</body>
+</html>
 ```
 
-In order for the rest of the django project to link this we will need to edit the
- 'NixLyn_Lab/settings.py' file:
+Now in the 'templates/homepage.html' you can extend this base:
 
-```!/bin/bash
-# Application definition
+```
+{% extends 'base.html' %}
 
-INSTALLED_APPS = [
-    'noticeBoard.apps.NoticeboardConfig',  <<--
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
+{% block content %}
+
+<section>
+    <h1> Hello World </h1>
+    <p> 
+        My HomePage, with an extended base. This base will be present in each
+        page that I extend it in
+    </p>
+</section>
+
+{% endblock %}
 ```
 
-Now let's tell django to migrate the new tables:
 
-```!/bin/bash
-python manage.py makemigrations
-```
+## Style It ##
 
-You should see something like:
+You can now edit your css to your hearts content, or copy paste from bootstrap..
+but those are outside the scope of this tutorial
 
-<img src="pics_/Migrations_Made.png">
-
-To help django make more sense of it all, let's add __str__ for it's returns
-
-```!/bin/bash
-class New_Posts(models.Model):
-    new_post_title  = models.CharField(max_length=200)
-    new_post_sum    = models.CharField(max_length=600)
-    pub_date        = models.DateTimeField("date published")
-    def __str__(self):
-        return str(self.title) + " | " + str(self.author)
-```
-
-And update the migrations again
-
-```!/bin/bash
-python manage.py migrate
-```
-
-From Here we need to open the API shell (Command Line Interface)
-
-
+Next up we will make it possible to register and login

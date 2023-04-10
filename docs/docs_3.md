@@ -206,3 +206,4 @@ And it redirects you to..
 <img src="pics_/clickable_posts.png">
 
 
+Great, in Part 4 we will look as some more styling options

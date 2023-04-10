@@ -1,26 +1,53 @@
+{% extends 'base.html' %}
 
-<body>
-    <section>
-        <h1>
+{% block content %}
+    <link rel="stylesheet" href="../static/css/homepage.css"/>
+    <link rel="stylesheet" href="../static/css/posts.css"/>
+    <link rel="stylesheet" href="../static/css/spin.css"/>
+
+    <section class="main_sect">
+        <!-- h1 class="head_line">
             Welcome to NixLyn_Labs
-        </h1>
-    </section>
-    <section>
-        <h1>NoticeBoard</h1>
-        <!-- USING JINJA -->
-        <ul style="background-color: chartreuse; padding: 10px 10px; margin: 10px 10px;">
-            {% for post in object_list %}
-            <!--  ! Using the Django version of Jinja  -->
-            <!--  ! We Have a potential Vulnerablity exploit -->
-            <!--  ! With the 'post.pk' being the primary_key -->
-            <a href="{% url 'article-details' post.pk %}">
-                <li>{{ post.title }}</li>
-                <li>{{ post.author }}</li>
-                <li>{{ post.body }}</li>
-                <br>
+        </h1 -->
+        <div class="box">
+            <span>
+            <div class='inner'>
+                <div style="--i:1">N</div>
+                <div style="--i:2">I</div>
+                <div style="--i:3">X</div>
+                <div style="--i:4">L</div>
+                <div style="--i:5">Y</div>
+                <div style="--i:6">N</div>
+            </div>
+            <a class="order_now" href="https://nixlyn.github.io">
+                <div>
+                    <input type="submit" class="btn" id="btn" name="order_button" value="See Now" href="https://nixlyn.github.io">
+                </div>
             </a>
-            {% endfor %}
-        </ul>
+            </span>
+        </div>
     </section>
-</body>
-</html>
+    <section class="post_sect">
+        <h1 class="post_head_line">NoticeBoard</h1>
+        <!-- USING JINJA -->
+        <div>
+            <ul class="post_head">
+                {% for post in object_list %}
+                <!--  ! Using the Django version of Jinja  -->
+                <!--  ! We Have a potential Vulnerablity exploit -->
+                <!--  ! With the 'post.pk' being the primary_key -->
+                <div class="post_block">
+                    <a href="{% url 'article-details' post.pk %}">
+                        <li>{{ post.title }}</li>
+                        <li>{{ post.author }}</li>
+                        <li>{{ post.body }}</li>
+                        <br>
+                    </a>
+                </div>
+                <br>
+                {% endfor %}
+                <br>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
