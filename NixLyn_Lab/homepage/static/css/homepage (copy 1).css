@@ -1,0 +1,28 @@
+.main_sect {
+    background-image: url('../pics/desk_2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 90vh;
+}
+
+
+.head_line {
+    font-size: xx-large;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.contact-us{
+    display: none;
+    flex-direction: column;
+    background-color: azure;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 20px;
+    border-radius: 0.4rem;
+}
+

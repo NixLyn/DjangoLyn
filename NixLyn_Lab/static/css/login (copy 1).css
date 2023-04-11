@@ -1,0 +1,38 @@
+body {
+    top: 0;
+    left:0;
+    margin: 0 0;
+    background-color:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../pics/book_stack.jpg');
+}
+
+.login-sect {
+    height: 100vh;
+    width: 100vw;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-block {
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 5px;
+    background-color: rgba(0, 255, 213, 0.952);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.login-block div{
+    padding: 10px 10px;
+}
+
+
