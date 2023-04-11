@@ -2,11 +2,9 @@
 {% block title %}Update Post{% endblock %}
 
 {% block content %}
-
-    <link rel="stylesheet" href="../static/css/base.css"/>
-    <link rel="stylesheet" href="../static/css/nav.css"/>
-    <link rel="stylesheet" href="../static/css/update_post.css"/>
-    <link rel="stylesheet" href="../static/css/post_form.css"/>
+{% load static %}
+<link rel="stylesheet" href="{% static '../static/css/update_post.css' %}"/>
+<link rel="stylesheet" href="{% static '../static/css/post_form.css' %}"/>
 
     <section class="all_back">
         <h1>
@@ -17,11 +15,10 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="form_title">    {{ form.title }}    </div>
-                <div class="form_author">   {{ form.author }}   </div>
                 <div class="form_body">     {{ form.body }}     </div>
                 <div class="form_sidenote"> {{ form.add_on }} </div>
                 <div class="form_color">    {{ form.color }}    </div>
-                <button>Post</button>
+                <button>Update_Post</button>
             </form>
         </div>
     </section>

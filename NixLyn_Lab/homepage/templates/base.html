@@ -1,14 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/nav.css"/>
-    <link rel="stylesheet" href="../static/css/base.css"/>
-    <link rel="stylesheet" href="../static/css/detailed.css"/>
-    <link rel="stylesheet" href="../static/css/posts.css"/>
-    <link rel="stylesheet" href="../static/css/spin.css"/>
+    <link rel="stylesheet" href="{% static '../static/css/nav.css' %}"/>
+    <link rel="stylesheet" href="{% static '../static/css/base.css' %}"/>
 
     <title>NixLyn_Labs</title>
 </head>
@@ -20,18 +18,19 @@
                     <h1>NL_Labs</h1>
                 </div>
             </a>
-            <a>
-                <div class="dash_board">
-                    <h1>DASH_BOARD</h1>
-                </div>
-            </a>
-            <div class="signing">
-                <div class="sign-in">
-                    <a>Sign_In</a>
-                </div>
-                <div class="sign-up">
-                    <a>Sign_In</a>
-                </div>
+            <div class="dash_board">
+                <a class="to_dash">
+                    <div>My Dash</div>
+                </a>
+                <a class="new_post" href="{% url 'add_post' %}">
+                    <div>New Post</div>
+                </a>
+                <a class="sign_in">
+                    <div>Sign-In</div>
+                </a>
+                <a class="sign_up">
+                    <div>Sign-In</div>
+                </a>
             </div>
         </div>
     </nav>

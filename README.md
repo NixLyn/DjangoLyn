@@ -4,11 +4,12 @@
 ToDo:
 
 ```
+
 Django Project:
 - SignIn
 - SignUp
-- NoticeBoard
+- BlogPosts
 - TheFlag
 - Text Editor
-- DashBoard
+
 ```

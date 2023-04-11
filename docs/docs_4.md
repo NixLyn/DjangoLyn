@@ -1,13 +1,21 @@
 # Basic Base Layout #
 
-In order to simplify things like universal NavBars,
-we use something known as {% extends 'base.html' %}
+In order to simplify things like universal NavBars, we use something
+ known as "base" files, an example of it looks like this:
 
+``` 
+{% extends 'base.html' %}
+{% block content %}
+
+...some html here...
+
+{% endblock %}
+```
 
 ## Design Tree ##
 
-Beside the templates folder, web designers often use the 'static' folder
-which contains something:
+Beside the templates folder, Web developers/designers often use the 'static' folder,
+which looks something like:
 
 ```
 .
@@ -24,6 +32,8 @@ which contains something:
     ├── picture_3.jpg
 ```
 
+To seperate all the different types of purposes.. html (structure), js (functions), css (style),
+
 This is a we structured way of keeping everything organized:
 (PS: never put any actual pictures in the 'images' folder.. that is for other things)
 
@@ -38,14 +48,14 @@ in 'templates/base.html' create your base template, mine looks kind of like this
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/nav.css"/>
-    <link rel="stylesheet" href="../static/css/base.css"/>
+    <link rel="stylesheet" href="{% static '../static/css/nav.css' %}"/>
+    <link rel="stylesheet" href="{% static '../static/css/base.css' %}"/>
     <title>NixLyn_Labs</title>
 </head>
 <body>
     <nav>
         <div class="mNav">
-            <a href="../"><div class="logo">
+            <a href="{% url 'homepage' %}"><div class="logo">
                 <h1>NL</h1>
             </div></a>
             <div class="signing">
@@ -73,7 +83,7 @@ Now in the 'templates/homepage.html' you can extend this base:
 {% extends 'base.html' %}
 
 {% block content %}
-    <link rel="stylesheet" href="../static/css/homepage.css"/>
+    <link rel="stylesheet" href="{% static '../static/css/homepage.css' %}"/>
     <section class="post_sect">
         <h1 class="post_head_line">NoticeBoard</h1>
         <!-- USING JINJA -->
@@ -106,7 +116,8 @@ and be redirected to the detailed-article page..
 {% extends 'base.html' %}
 
 {% block content %}
-    <link rel="stylesheet" href="../static/css/detailed.css"/>
+{% load static %}
+    <link rel="stylesheet" href="{% static '../static/css/detailed.css' %}"/>
     <section class="all_back">
         <h1>
             Article Details
@@ -123,12 +134,22 @@ and be redirected to the detailed-article page..
 {% endblock %}
 ```
 
+Next page we will make it possible to add/update/delete a post on the noticeboard.
 
 
-## Style It ##
+### Style It ###
 
 You can now edit your css to your hearts content, or copy paste from bootstrap..
-but those are outside the scope of this tutorial
+but those are outside the scope of this tutorial, and for the sake of keeping this
+tutorial as simplistic as possible, I won't be including them in the docs,
+unless otherwise required for the sake of achieving a goal..
 
-Next up we will make it possible to add a post on the noticeboard
 
+
+### ClosingNotes ###
+
+If ever I do make another one of these bad-grammered, miss-spelled, late-night, docs
+on such a topic, it will be isolated from other engagements. As it has been pointed out to me,
+that I do need to learn to stay on topic...
+
+Like that other time we started building a rando...

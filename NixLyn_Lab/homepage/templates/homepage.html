@@ -1,57 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <link rel="stylesheet" href="../static/css/homepage.css"/>
-    <link rel="stylesheet" href="../static/css/posts.css"/>
-    <link rel="stylesheet" href="../static/css/spin.css"/>
+    {% load static %}
 
-    <section class="main_sect">
-        <!-- h1 class="head_line">
-            Welcome to NixLyn_Labs
-        </h1 -->
-        <div class="box">
-            <span>
-            <div class='inner'>
-                <div style="--i:1">N</div>
-                <div style="--i:2">I</div>
-                <div style="--i:3">X</div>
-                <div style="--i:4">L</div>
-                <div style="--i:5">Y</div>
-                <div style="--i:6">N</div>
-            </div>
-            <a class="order_now" href="https://nixlyn.github.io">
-                <div>
-                    <input type="submit" class="btn" id="btn" name="order_button" value="See Now" href="https://nixlyn.github.io">
-                </div>
-            </a>
-            </span>
-        </div>
-    </section>
-    <section class="post_sect">
-        <h1 class="post_head_line">NoticeBoard</h1>
-        <div class="add_post">
-            <a href="{% url 'add_post' %}">Add Post</a>
-        </div>
-        <!-- USING Django version of Jinja -->
-        <div>
-            <ul class="post_head">
-                {% for post in object_list %}
-                <!--  ! Using the Django version of Jinja  -->
-                <!--  ! We Have a potential Vulnerablity exploit -->
-                <!--  ! With the 'post.pk' being the primary_key -->
-                <div class="post_block">
-                    <a href="{% url 'article-details' post.pk %}">
-                        <li>{{ post.title }}</li>
-                        <li>{{ post.author }}</li>
-                        <li>{{ post.body }}</li>
-                        <li>{{ post.color }}</li>
-                        <br>
-                    </a>
-                </div>
-                <br>
-                {% endfor %}
-                <br>
-            </ul>
-        </div>
-    </section>
+    {% include 'main.html' %}
+    {% include 'noticeboard.html' %}
+
 {% endblock %}

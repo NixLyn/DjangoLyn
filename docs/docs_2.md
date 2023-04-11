@@ -4,7 +4,7 @@ To create the 'homepage' app, in the project base directory
 We'll need to run this command:
 
 ```!/bin/bash
-python manage.py startapp homepage
+$ python manage.py startapp homepage
 ```
 
 If no errors appear, it worked
@@ -14,7 +14,7 @@ If no errors appear, it worked
 Now to add the module to the setings open 'NixLyn_Lab/settings.py'
 and make these changes:
 
-```!/bin/bash
+```
 # Application definition
 
 INSTALLED_APPS = [
@@ -34,7 +34,10 @@ Since we have the login database already setup for /Admin
 we can simply migrate the app's configs with a simple command in the base directory
 
 ```!/bin/bash
-python manage.py migrate
+
+$ python manage.py makemigrations
+
+$ python manage.py migrate
 ```
 
 It should respond with :
@@ -50,13 +53,13 @@ Running migrations:
 
 We'll need to add these changes to the 'NixLyn_Lab/urls.py' file:
 
-```!/bin/bash
+```
 from django.contrib import admin
 from django.urls import path, include               <<-- 'include'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("homepage.urls")),    <<-- 'homepage urls link'
+    path("", include("homepage.urls")), #   <<-- 'homepage urls link'
 ]
 ```
 
@@ -65,7 +68,7 @@ urlpatterns = [
 Now in the 'homepage/' directory, create a 'urls.py' file
 and add:
 
-```!/bin/bash
+```
 from django.urls import path
 from . import views
 
@@ -78,7 +81,7 @@ urlpatterns = [
 
 In the 'homepage/vies.py' file you will need:
 
-```!/bin/bash
+```
 from django.shortcuts import render
 
 # Create your views here.
@@ -96,16 +99,27 @@ and in there we can make the 'homepage.html' file, which the views.py will point
 
 A simple "Hello World!" is always a good start:
 
-```!/bin/bash
+```
 <h1>Hello World!</h1>
 ```
 
 Next, once again:
 
 ```!/bin/bash
-python manage.py runserver
+$ python manage.py runserver
 ```
 
-Now  http://127.0.0.1:8000/ should be your home directory page in the browers
+Now `http://127.0.0.1:8000/` should be your home directory page in the browers
 
+### ClosingNotes ###
+
+It's Always _BEST_ Practice to work [BACK] to [FRONT]..
+With the case of Django:
+-> ```models.py```
+-> ```forms.py```
+-> ```views.py```
+-> ```urls.py```
+-> ```.html```
+-> ```.css```
+-> ```.js```
 

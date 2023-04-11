@@ -1,25 +1,23 @@
 {% extends 'base.html' %}
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}Article Details{% endblock %}
 
 {% block content %}
-
-<link rel="stylesheet" href="../static/css/base.css"/>
-<link rel="stylesheet" href="../static/css/nav.css"/>
-<link rel="stylesheet" href="../static/css/detailed.css"/>
-
+{% load static %}
+<link rel="stylesheet" href="{% static '../static/css/detailed.css' %}"/>
     <section class="all_back">
         <h1>
             Article Details
         </h1>
         <div class="daBlock">
             <h1>{{ post.title }}</h1>
-            <h2>{{ post.author.first_name }}</h2>
-            <h2>{{ post.author.last_name }}</h2>
-            <h2>{{ post.author.email }}</h2>
-            <h3>{{ post.body }}</h3>
-            <h4>{{ post.add_on }}</h4>
-            <h4>{{ post.color }}</h4>
-            <a href="{% url 'update_post' post.pk %}">Update</a>
+            <h3>{{ post.author.first_name }}    </h3>
+            <h3>{{ post.author.last_name }}     </h3>
+            <h3>{{ post.author.email }}         </h3>
+            <h3>{{ post.body }}                 </h3>
+            <h4>{{ post.add_on }}               </h4>
+            <h4>{{ post.color }}                </h4>
+            <a href="{% url 'update_post' post.pk %}">Update Post</a>
+            <a href="{% url 'delete_post' post.pk %}">Delete Post</a>
         </div>
     </section>
 {% endblock %}

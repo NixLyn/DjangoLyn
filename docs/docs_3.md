@@ -1,13 +1,13 @@
 # User DataBase #
 
-Now that we have our homepage setup, we want users to be able to
+    Now that we have our homepage setup, we want users to be able to
 Register and Login, so let's make a database for them
 
 This means some auth tools are in order..
 
 in the 'homepage/models.py' file:
 
-```!/bin/bash
+```
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -24,12 +24,12 @@ class Post(models.Model):
         return str(self.title) + " | " + str(self.author)
 
     def get_absolute_url(self):
-        return reverse('home', )
+        return reverse('homepage')
 ```
 
 Now in your 'homepage/admin.py' add :
 
-```!/bin/bash
+```
 from django.contrib import admin
 from .models import Post
 
@@ -45,18 +45,14 @@ Which means that we will be able to link users to posts
 but first, let's stop the server and makemigrations
 
 ```!/bin/bash
-python manage.py makemigrations
+$ python manage.py makemigrations
+
+$ python manage.py migrate
+
+$ python manage.py runserver
 ```
 
-```!/bin/bash
-python manage.py migrate
-```
-
-```!/bin/bash
-python manage.py runserver
-```
-
-Then head on over to the '/admin' in your browers:
+Then head on over to the '.../admin' in your browers:
 
 
 <img src="pics_/create_post.png">
@@ -64,6 +60,9 @@ Then head on over to the '/admin' in your browers:
 You will see there is the option to add a post :)
 
 <img src="pics_/make_post.png">
+
+
+### ListView:OOP ###
 
 
 Now back to the 'homepage/views.py' file:
@@ -74,9 +73,9 @@ DetailView  : will let us view the whole post
 We are now going to use proper OOP for the views.py,
 as this provides more verbose control of data
 
-```!/bin/bash
+```
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from .models import Post
 
 # Create your views here.
@@ -93,7 +92,7 @@ Now that we're moving up to class based views, we'll need to update the url meth
 
 In 'homepage/urls.py' make these changes:
 
-```!/bin/bash
+```
 from django.urls import path
 #from . import views      <<-- Comment out
 from .views import HomeView
@@ -108,16 +107,14 @@ urlpatterns = [
 ```
 
 
-## Jinja2 ##
+## Jinja.. Django Style ##
 
 
 Now that the BackEnd is sorted, let's make the posts viewable on the home directory
 
-### ListView ###
-
 in the 'homapage/templates/homepage.html' file:
 
-```!/bin/bash
+```
 <body>
     <section>
         <h1>
@@ -128,7 +125,6 @@ in the 'homapage/templates/homepage.html' file:
         <h1>NoticeBoard</h1>
         <!-- Basic Styles, just for now -->
         <ul style="background-color: chartreuse; padding: 10px 10px; margin: 10px 10px;">
-            <!-- USING JINJA -->
             {% for post in object_list %}
                 <li>{{ post.title }}</li>
                 <li>{{ post.author }}</li>
@@ -141,18 +137,21 @@ in the 'homapage/templates/homepage.html' file:
 ```
 
 
-If you run the server and open the home page you sould see:
+If you run the server and open the homepage you sould see something like:
 
 <img src="pics_/show_posts.png">
 
 
 ### DetailView ###
 
-Now we want to be able to click on a post and open it in a new page:
+Now we want to be able to click on a post and open it in a new page to 
+to view all the details (and later, comments):
 
-So let's first add a Class in the views file for DetailViews
+So let's first add a Class in the 'views.py' file for DetailViews
 
-```!/bin/bash
+```
+from django.views.generic import ListView, DetailView
+
 class ArticleDetailView(DetailView):
     model           = Post
     template_name   = 'article_details.html'
@@ -160,7 +159,7 @@ class ArticleDetailView(DetailView):
 
 And of course the urls.py
 
-```!/bin/bash
+```
 from .views import HomeView, ArticleDetailView
 
 urlpatterns = [
@@ -171,7 +170,7 @@ urlpatterns = [
 
 Now make a file 'homepage/temlates/article_details.html'
 
-```!/bin/bash
+```
 
 <body>
     <section>
@@ -206,4 +205,18 @@ And it redirects you to..
 <img src="pics_/clickable_posts.png">
 
 
-Great, in Part 4 we will look as some more styling options
+Great, in Part 4 we will look as some more functions to control our new database.
+
+
+### ClosingNotes ###
+
+Django Provide a fairly large library, and quite the professionally, extensive documentaion site.
+This tutorial is only to be seen as beginner friendly, summery..
+I highly suggest having a look on their <a href="https://docs.djangoproject.com">_docs_</a>
+If you find it intimidating, (I know, I do), continue to follow these docs until you are more
+comfortable with the basics, then hop on over to their tab and and some deep dives..
+If you find something dope, try it, if it works, flaunt it, if it doesn't, don't just junp onto
+gpt to spoonfeed you all the answers in life... Google that shit. If you find that you still
+fall short of any guidance or documentations, try something called "Social Interaction"..
+You never know, who knows what...
+

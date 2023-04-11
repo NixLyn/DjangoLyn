@@ -1,0 +1,25 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static '../static/css/homepage.css' %}"/>
+<link rel="stylesheet" href="{% static '../static/css/spin.css' %}"/>
+
+<section class="main_sect">
+    <div class="box">
+        <span>
+        <div class='inner'>
+            <div style="--i:1">N</div>
+            <div style="--i:2">I</div>
+            <div style="--i:3">X</div>
+            <div style="--i:4">L</div>
+            <div style="--i:5">Y</div>
+            <div style="--i:6">N</div>
+        </div>
+        <a class="order_now" href="https://nixlyn.github.io">
+            <div>
+                <input type="submit" class="btn" id="btn" name="order_button" value="See Now" href="https://nixlyn.github.io">
+            </div>
+        </a>
+        </span>
+    </div>
+</section>
+{% endblock %}
