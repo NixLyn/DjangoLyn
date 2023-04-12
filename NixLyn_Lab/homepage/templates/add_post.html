@@ -8,20 +8,25 @@
 
     <section class="all_back">
         {% if user.is_authenticated %}
-        <h1>
-            Add NoticeBoard Post
-        </h1>
-        <div class="form-group">
-
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form_title">    {{ form.title }}  </div>
-                <div class="form_body">     {{ form.body }}   </div>
-                <div class="form_sidenote"> {{ form.add_on }} </div>
-                <div class="form_color">    {{ form.color }}  </div>
-                <button>Post</button>
-            </form>
-        </div>
+            <h1>Add NoticeBoard Post</h1>
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button>Post</button>
+                </form>
+            </div>
+            <script>
+                /* First we collect the ID of the current user */
+                var user = "{{ user.id }}";
+                /* Then assign it to the 'id_author' value */
+                document.getElementById('id_author').value = user;
+                /* We then collect the parentNode of the element */
+                var p_val = document.querySelector('#id_author').parentNode;
+                /* And hid the whole block */
+                p_val.style.display = 'none'
+                /* This Can be found in 'view source' and be edited via the console */
+            </script>
         {% else %}
         <div>
             <h1>
@@ -40,4 +45,5 @@
         </div>
         {% endif %}
     </section>
+
 {% endblock %}

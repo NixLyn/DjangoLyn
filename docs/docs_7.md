@@ -33,6 +33,8 @@ Make these changes:
 
 You can apply the same logic to all areas of the project
 
+## User Restriction ##
+
 But if you want to make sure users are only able to edit/delete only their own
 then we need to compare the user id to the post_author id.
 Luckily django provides means of doing this.
@@ -75,4 +77,14 @@ And here is a more practical example:
 </h1>
 ```
 
+## Profiles ##
 
+The rest of this documentation will not include all the profile changes.
+You can find more on it buy following John Elder in this tutorial:
+<a href="https://www.youtube.com/watch?v=Nxgi4qF6i1Q&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi&index=24">
+
+The next documentation will cover the basics of the DashBoards and Connecting the user to
+the corrosponding ToolBoxNodes, so we can run scripts and return the data to user for view, 
+as well as saving the retrieved data to a database.
+
+Afterwards a  segmentation on Security Analysis of Django vs Recons

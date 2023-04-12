@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}My Profile Edit{% endblock %}
+
+{% block content %}
+{% load static %}
+<section class="all_back">
+    <h1>
+        Edit NixLyn_Lab Profile
+    </h1>
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Update</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
