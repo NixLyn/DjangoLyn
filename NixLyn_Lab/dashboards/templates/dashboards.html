@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block title %}BashBoards{% endblock %}
+
+{% block content %}
+{% load static %}
+
+    <style>
+        .head_lab {
+            height: 10vh;
+            top: 10%;
+            margin: 0 0;
+            padding: 0 0;
+        }
+        .dash_block{
+            top: 20%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .my_pannel{
+            display: flex;
+            flex-direction: column;
+            width: 15%;
+            height: 100%;
+            background-color: dimgray;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .my_pannel a {
+            height: 35px;
+            margin: 20px 10px;
+            background-color: rgba(3, 137, 255, 0.342);
+            border-radius: 10px;
+        }
+
+        .rooms {
+            top: 20%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+            height: 100%;
+            background-color: aqua;
+        }
+        .rooms a {
+            color: black;
+            width: 45%;
+            height: 20%;
+            margin: 10px 10px;
+            font-size: xx-large;
+            font-style: normal;
+            justify-items: center;
+            align-items: center;
+            text-align: center;
+            text-justify: newspaper;
+
+            border-radius: 10px;
+            text-decoration: none;
+        }
+        .red_tag {background-color: rgba(255, 0, 0, 0.5);}
+        .red_tag:hover{background-color: rgba(255, 0, 0, 0.9);	transition: ease-in-out 1s;}
+
+        .blue_tag{background-color: rgba(0, 0, 255, 0.5);}
+        .blue_tag:hover{background-color: rgba(0, 0, 255, 0.9); transition: ease-in-out 1s;}
+
+        .rvsb_tag{background-color: rgba(128, 0, 128, 0.5);}
+        .rvsb_tag:hover{background-color: rgba(128, 0, 128, 0.9); transition: ease-in-out 1s;}
+
+        .frankie_s{background-color: rgb(94, 255, 0, 0.5);}
+        .frankie_s:hover{background-color: rgb(94, 255, 0, 0.9); transition: ease-in-out 1s;}
+
+    </style>
+    <section style="height: 80vh;">
+        {% if user.is_authenticated %}
+        <div class="head_lab">
+            <h2 style="color:black; margin: 0; padding: 0;">Welcome to your DashBoards</h2>
+        </div>
+
+            <div class="dash_block">
+                <div class="my_pannel">
+                        <a>-Pannel_0-</a>
+                        <a>-Pannel_2-</a>
+                        <a>-Pannel_3-</a>
+                        <a>-Pannel_4-</a>
+                </div>
+                <div class="rooms">
+                    <a class="red_tag" href="{% url 'redroom' %}">
+                        Red_Room
+                    </a>
+                    <a class="blue_tag" href="{% url 'blueroom' %}">
+                        Blue_Room
+                    </a>
+                    <a class="frankie_s" href="{% url 'frankieslab' %}">
+                        Frankie's Lab
+                    </a>
+                    <a class="rvsb_tag" href="{% url 'rvsb_events' %}">
+                        Red-vs-Blue <br/> Events
+                    </a>
+                </div>
+            </div>
+        {% else %}
+        <div>
+            <h1>
+                Why are you here... when you haven't Signed-In
+            </h1>
+            <a href="{% url 'homepage' %}">
+                <div>Home</div>
+            </a>
+        </div>
+        {% endif %}
+    </section>
+
+{% endblock %}

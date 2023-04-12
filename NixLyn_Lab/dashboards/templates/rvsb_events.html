@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Red-vs-Blue{% endblock %}
+
+{% block content %}
+{% load static %}
+
+    <section>
+        {% if user.is_authenticated %}
+            <h2>Welcome to your Red-vs-Blue</h2>
+            <h1>{{ user.username }}</h1>
+            <h3>
+                Our Community Driven Training Events!
+            </h3>
+        {% else %}
+        <div>
+            <h1>
+                Why are you here... when you haven't Signed-In
+            </h1>
+            <a href="{% url 'homepage' %}">
+                <div>Home</div>
+            </a>
+        </div>
+        {% endif %}
+    </section>
+
+{% endblock %}

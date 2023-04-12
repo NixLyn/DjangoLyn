@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Red_Room{% endblock %}
+
+{% block content %}
+{% load static %}
+
+    <section>
+        {% if user.is_authenticated %}
+            <h2>Welcome to your Red_Room</h2>
+            <h1>{{ user.username }}</h1>
+            <h3>
+                Here You will learn and practice offensive-security
+            </h3>
+        {% else %}
+        <div>
+            <h1>
+                Why are you here... when you haven't Signed-In
+            </h1>
+            <a href="{% url 'homepage' %}">
+                <div>Home</div>
+            </a>
+        </div>
+        {% endif %}
+    </section>
+    <script>
+        /* ToDo:
+            -Create Socket Connection to RedNode
+            -Link Socket(On/Off) - Button
+            -Print Status
+        */
+    </script>
+
+{% endblock %}

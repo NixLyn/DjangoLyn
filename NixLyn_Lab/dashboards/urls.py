@@ -1,16 +1,11 @@
 from django.urls import path
-from .views import HomeView, ArticleDetailView, AddPostView, UpdatePostView, DeletePostView 
-
-
-    # $ Here <int:pk> is a Primary_Key value... (SQL column/row)
-    # ? http://127.0.0.1:8000/article/1 
-    # ! Meaning it is a potential Cyber Risk, for SQL_injections
+from .views import DashBoardsView, RedRoomView, BlueRoomView, FranknLabView, RvsBView
 
 
 urlpatterns = [
-    path('',                        HomeView.as_view(),             name='homepage'),
-    path('article/<int:pk>',        ArticleDetailView.as_view(),    name='article-details'),
-    path('add_post/',               AddPostView.as_view(),          name='add_post'),
-    path('article/edit/<int:pk>',   UpdatePostView.as_view(),       name='update_post'),
-    path('article/remove/<int:pk>', DeletePostView.as_view(),       name='delete_post'),
+    path('dashboards/',              DashBoardsView.as_view(),  name='dashboards'),
+    path('dashboards/redroom/',      RedRoomView.as_view(),     name='redroom'),
+    path('dashboards/blueroom/',     BlueRoomView.as_view(),    name='blueroom'),
+    path('dashboards/frankieslab/',  FranknLabView.as_view(),   name='frankieslab'),
+    path('dashboards/rvsb_events/',  RvsBView.as_view(),        name='rvsb_events'),
 ]
