@@ -16,8 +16,12 @@
             <h3>{{ post.body }}                 </h3>
             <h4>{{ post.add_on }}               </h4>
             <h4>{{ post.color }}                </h4>
-            <a href="{% url 'update_post' post.pk %}">Update Post</a>
-            <a href="{% url 'delete_post' post.pk %}">Delete Post</a>
+            {% if user.is_authenticated %}
+                {% if user.id == post.author.id %}
+                    <a href="{% url 'update_post' post.pk %}">Update Post</a>
+                    <a href="{% url 'delete_post' post.pk %}">Delete Post</a>
+                {% endif %}
+            {% endif %}
         </div>
     </section>
 {% endblock %}

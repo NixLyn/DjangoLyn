@@ -170,7 +170,6 @@ Next up we will need to make use of this user-auth tool,
 So we'll be making some changes to the code to control
 who can/can't do what, depending on their account..
 
-
 Your 'members' directories tree should now look like this:
 
 ```

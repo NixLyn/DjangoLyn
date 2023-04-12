@@ -19,18 +19,27 @@
                 </div>
             </a>
             <div class="dash_board">
+                {% if user.is_authenticated %}
+
                 <a class="to_dash">
                     <div>My Dash</div>
                 </a>
                 <a class="new_post" href="{% url 'add_post' %}">
                     <div>New Post</div>
                 </a>
-                <a class="sign_in">
+                <a class="sign_in" href="{% url 'logout' %}">
+                    <div>Sign-Out</div>
+                </a>
+
+                {% else %}
+                <a class="sign_in" href="{% url 'login' %}">
                     <div>Sign-In</div>
                 </a>
-                <a class="sign_up">
-                    <div>Sign-In</div>
+
+                <a class="sign_up" href="{% url 'register' %}">
+                    <div>Sign-Up</div>
                 </a>
+                {% endif %}
             </div>
         </div>
     </nav>

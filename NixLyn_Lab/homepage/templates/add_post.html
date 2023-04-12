@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="{% static '../static/css/post_form.css' %}"/>
 
     <section class="all_back">
+        {% if user.is_authenticated %}
         <h1>
             Add NoticeBoard Post
         </h1>
@@ -14,13 +15,29 @@
 
             <form method="POST">
                 {% csrf_token %}
-                <div class="form_title">    {{ form.title }}    </div>
-                <div class="form_author">     {{ form.author }}     </div>
-                <div class="form_body">     {{ form.body }}     </div>
+                <div class="form_title">    {{ form.title }}  </div>
+                <div class="form_body">     {{ form.body }}   </div>
                 <div class="form_sidenote"> {{ form.add_on }} </div>
-                <div class="form_color">    {{ form.color }}    </div>
+                <div class="form_color">    {{ form.color }}  </div>
                 <button>Post</button>
             </form>
         </div>
+        {% else %}
+        <div>
+            <h1>
+                Please Sign-In or Sign-Up to add a Post on the NoticeBoard
+            </h1>
+            <a class="sign_in" href="{% url 'login' %}">
+                <div>Sign-In</div>
+            </a>
+            <a class="sign_up" href="{% url 'register' %}">
+                <div>Sign-Up</div>
+            </a>
+            <a class="sign_up" href="{% url 'homepage' %}">
+                <div>Home</div>
+            </a>
+
+        </div>
+        {% endif %}
     </section>
 {% endblock %}

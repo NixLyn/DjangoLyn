@@ -10,16 +10,23 @@
         <h1>
             Update NoticeBoard Post
         </h1>
-        <div class="form-group">
-
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form_title">    {{ form.title }}    </div>
-                <div class="form_body">     {{ form.body }}     </div>
-                <div class="form_sidenote"> {{ form.add_on }} </div>
-                <div class="form_color">    {{ form.color }}    </div>
-                <button>Update_Post</button>
-            </form>
-        </div>
+        {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form_title">    {{ form.title }}    </div>
+                    <div class="form_body">     {{ form.body }}     </div>
+                    <div class="form_sidenote"> {{ form.add_on }} </div>
+                    <div class="form_color">    {{ form.color }}    </div>
+                    <button>Update_Post</button>
+                </form>
+            </div>
+        {% endif %}
+        {% else %}
+        <h1>
+            You are not authenterized to edit this post
+        </h1>
+        {% endif %}
     </section>
 {% endblock %}
