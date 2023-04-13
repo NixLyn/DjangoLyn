@@ -26,3 +26,6 @@ class PostDash(models.Model):
         return reverse('dashboards')
 
 
+# ToDo:
+# ? Create model for target profile [url/ip, recon_data{OS, ports,etc}, site_clone, heaps, report]
+# ? Make admins able to edit the data, but not users...

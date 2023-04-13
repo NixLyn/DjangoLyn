@@ -3,14 +3,80 @@
 
 {% block content %}
 {% load static %}
+<style>
+    .class_block {
+        width: 100vw;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .lesson_block {
+        width: 90%;
+        height: 90vh;
+        background-color: blue;
+        display: flex;
+        flex-direction: column;
+    }
+    .my_pannel {
+        width: 10%;
+        height: 90vh;
+        background-color: red;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .heading {
+        height: 30%;
+        width: 100%;
+        background-color: grey;
+        display: flex;
+        flex-direction: column;
+    }
+    .lesson_msg{
+        height: 70%;
+        width: 100%;
+        background-color: aqua;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-    <section>
+}
+</style>
+
+    <section style="top: 20vh; height: 80vh;">
         {% if user.is_authenticated %}
-            <h2>Welcome to your Red_Room</h2>
-            <h1>{{ user.username }}</h1>
-            <h3>
-                Here You will learn and practice offensive-security
-            </h3>
+        <div class="class_block">
+            <div class="my_pannel">
+                <a href="{% url 'redbench_cmd' %}" style="border-radius: 10px; height: 10%; width: 45%; background-color: rgb(0, 0, 0); color: rgb(153, 255, 0); font-size: xx-large;">-[./]-</a>
+                <a>-Pannel_2-</a>
+                <a>-Pannel_3-</a>
+                <a>-Pannel_4-</a>
+            </div>
+            <div class="lesson_block">
+                <div class="heading">
+                    <h1>Welcome to your Red_Room</h1>
+                    <h1>{{ user.username }}</h1>
+                    <h2>
+                        Here You will learn and practice offensive-security
+                    </h2>
+                </div>
+                <div class="lesson_msg">
+                    <h2>
+                        The first bench we have for you to start working on is the 
+                            RedNode:Live-Kali-cmd
+                    </h2>
+                    <h3>
+                        This workbench will connect to one of our Kali-servers and let you run
+                        shell commands, and display the returned output, however, it is NOT a 
+                        direct ssh, and you will get stuck if you attempt any kind of 'sudo' cmds..
+                        To get started click <a  href="{% url 'redbench_cmd' %}">Here</a>... 
+                        or left pannel with the </a style="background-color: rgb(54, 54, 54); color: rgb(153, 255, 0);"> [./] </a> symbol.. 
+                    </h3>
+                </div>
+            </div>
+        </div>
         {% else %}
         <div>
             <h1>

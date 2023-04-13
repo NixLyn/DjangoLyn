@@ -28,3 +28,7 @@ class RvsBView(TemplateView):
     model           = PostDash
     template_name   = 'rvsb_events.html'
 
+
+class RedBenchCMD(TemplateView):
+    model           = PostDash
+    template_name   = 'redbench_cmd.html'
