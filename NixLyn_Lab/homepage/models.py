@@ -22,7 +22,7 @@ class Post(models.Model):
     add_on      = models.CharField(max_length=50, default="SideNote: ")
     date_made   = models.DateField(auto_now_add=True)
     def __str__(self):
-        return str(self.title) + " | " + str(self.author)
+        return str(self.title) + " | " + str(self.author) + "|" + str(self.color)
 
 
     def get_absolute_url(self):

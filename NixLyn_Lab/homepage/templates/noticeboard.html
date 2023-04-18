@@ -11,8 +11,13 @@
     <div class="post_box">
         <ul class="post_list" >
             {% for post in object_list %}
-                <li class="post_block">
-                    <a class="post_click" href="{% url 'article-details' post.pk %}" >
+                <li class="post_block" style="
+                            background-color: {{ post.color }};
+                            margin: 20px 0;
+                            width: 200vh;
+                            opacity: 0.8;
+                            left: 10vh;">
+                    <a class="post_click" href="{% url 'article-details' post.pk %}">
                         <div class="post_title"> {{ post.title }}       </div>
                         <div class="post_author">{{ post.author }}      </div>
                         <div class="post_body">  {{ post.body }}        </div>
@@ -26,4 +31,5 @@
     </div>
 
 </section>
+
 {% endblock %}

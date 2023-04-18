@@ -9,7 +9,7 @@
     </h1>
     <div class="form-group">
         <form method="POST">
-            {% csrf_token %}
+            <div>{% csrf_token %}</div>
             {{ form.as_p }}
             <button>Update</button>
         </form>

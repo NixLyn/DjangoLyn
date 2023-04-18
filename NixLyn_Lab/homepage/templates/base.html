@@ -5,48 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '../static/css/nav.css' %}"/>
     <link rel="stylesheet" href="{% static '../static/css/base.css' %}"/>
     <title>NixLyn_Labs</title>
 </head>
 <style>
 
-.mNav {
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: top;
-background-color: rgb(0, 0, 0);
-top: 0;
-left: 0;
-width: 100vw;
-height: 10vh;
-}
 
+nav{
+    display: contents;
+}
 nav a {
     text-decoration: none;
 }
 
-.logo h1{
-    margin-top: 0;
-    margin-left: 10px;
-    font-size: 2.2rem;
-    color: aliceblue;
-    cursor: pointer;
-    text-decoration: none;
+
+.mNav {
+    display: inline-block;
+    justify-content: space-between;
+    align-items: top;
+    background-color: rgb(0, 0, 0);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
 }
 
 
-.logo div{
-    cursor: pointer;
-    text-decoration: none;
-}
 
 .dash_board {
-    margin-top: 4px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 100%;
 }
 
 .dash_board a div{
@@ -67,56 +57,87 @@ nav a {
     transition: all 0.4s ease-in-out;
 }
 
+
+
+.left_nav {
+    margin-top: 0;
+    height: 10vh;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
+
+.right_nav {
+    right: 0;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+
 .log_o {
     background-color: white;
-    top:0; 
-    padding-left:  20px; 
-    padding-right:  20px; 
     padding-top: 0; 
     padding-bottom: 0; 
     margin: 0 0;
     border-top-right-radius: 25px;
-    
+    height: 10vh;
 }
+
+
 
 
 </style>
 <body>
-    <nav>
-        <div class="mNav" >
+    <nav class="mNav">
+        <div>
             {% if user.is_authenticated %}
                 <div class="dash_board">
-                    <a class="log_o" href="{% url 'homepage' %}">
-                        <h1  style="color:black" >NL_Labs | {{ user.username }}</h1>
-                    </a>
-                    <a class="to_dash" href="{% url 'dashboards' %}">
-                        <div>My Dash</div>
-                    </a>
-                    {% if url == 'homepage' %}
-                        <a class="new_post" href="{% url 'add_post' %}">
-                            <div>New Post</div>
+                    <div class="left_nav">
+                        <a class="log_o" href="{% url 'homepage' %}">
+                            <h1  style="color:black" >NL_Labs | {{ user.username }}</h1>
                         </a>
-                    {% endif %}
-                    <a class="sign_in" href="{% url 'logout' %}">
-                        <div>Sign-Out</div>
-                    </a>
-                    <a class="me_t" href="{% url 'edit_profile' %}">
-                        <div>Me_</div>
-                    </a>
+                    </div>
+                    <div class="right_nav">
+                        <a class="to_dash" href="{% url 'dashboards' %}">
+                            <div>My Dash</div>
+                        </a>
+                        {% if url == 'homepage' %}
+                            <a class="new_post" href="{% url 'add_post' %}">
+                                <div>New Post</div>
+                            </a>
+                        {% endif %}
+                        <a class="sign_in" href="{% url 'logout' %}">
+                            <div>Sign-Out</div>
+                        </a>
+                        <a class="me_t" href="{% url 'edit_profile' %}">
+                            <div>Me_</div>
+                        </a>
+                    </div>
                 </div>
             {% else %}
                 <div class="dash_board">
-                    <a style="background-color:black;" href="{% url 'homepage' %}">
-                        <div >
-                            <h1 style="color:white">NL_Labs </h1>
-                        </div>
-                    </a>
-                    <a class="sign_in" href="{% url 'login' %}">
-                        <div>Sign-In</div>
-                    </a>
-                    <a class="sign_up" href="{% url 'register' %}">
-                        <div>Sign-Up</div>
-                    </a>
+                    <div class="left_nav">
+                        <a class="log_o" href="{% url 'homepage' %}">
+                            <h1  style="color:black" >NL_Labs |  Welcome </h1>
+                        </a>
+                    </div>
+                    <div class="right_nav">
+                        <a class="sign_in" href="{% url 'login' %}">
+                            <div>Sign-In</div>
+                        </a>
+                        <a class="sign_up" href="{% url 'register' %}">
+                            <div>Sign-Up</div>
+                        </a>
+                    </div>
                 </div>
             {% endif %}
         </div>
@@ -126,5 +147,8 @@ nav a {
 
     {% endblock %}
     
+    <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+        {{ copy.get_status_display }} </p>
+       
 </body>
 </html>

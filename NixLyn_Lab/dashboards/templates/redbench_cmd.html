@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}RedBench-CMD{% endblock %}
+
+{% block content %}
+{% load static %}
     <section>
         <div class="Test_conn">
             <div class="header-lines">
@@ -51,7 +47,6 @@
             </div> 
         </div>
     </section>
-</body>
 <script>
     /* Using: file:///home/dillon/CURRENT/RedNode/SOCK_JS_TEST/test_.html */
     /*
@@ -152,4 +147,4 @@
    }, false);
 
 </script>
-</html>
+{% endblock %}

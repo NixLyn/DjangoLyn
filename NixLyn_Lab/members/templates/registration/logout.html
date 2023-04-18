@@ -3,7 +3,8 @@
 
 {% block content %}
 {% load static %}
-<section class="all_back">
+<link rel="stylesheet" href="{% static '../static/css/spin.css' %}"/>
+<section class="main_box">
     <div class="form-group">
         <form method="POST">
             {% csrf_token %}
