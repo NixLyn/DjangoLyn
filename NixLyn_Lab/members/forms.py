@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.contrib.auth.models import User, Permission 
+from django.contrib.auth.models import User
 from django import forms
 
 
@@ -13,7 +13,6 @@ COLOR_CHOICES = (
     ('white','WHITE'),
 )
 
-
 CURRENT_COURSE = (
     ('RedTeam', 'Red_Team'),
     ('BlueTeam', 'Blue_Team'),
@@ -22,12 +21,13 @@ CURRENT_COURSE = (
     ('BackEnd', 'Back_End'),
     ('PyData', 'PyData'),
     ('Q-Sec', 'Quantum_Security'),
-    ("Frankie's Lab Rat", "Frankie's Course"),
+    ("Lab Rat", "Frankie's Course"),
 )
 
 PERMS_C = (
-    ('poes', 'naai'),
-    ('fuck', 'head')
+    ('0', 'free'),
+    ('1', 'paid'),
+    ('2', 'promo')
 )
 
 
@@ -39,7 +39,7 @@ class SignUpForm(UserCreationForm):
 
     class meta:
         model   = User
-        fields  = ('username',  'password1', 'password2')
+        fields  = ('username', 'first_name', 'last_name',  'password1', 'password2')
 
 
     def __init__(self, *args, **kwargs):
@@ -50,36 +50,15 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'forms-control'
 
 
-
-class EditUserForm(UserChangeForm):
-    username        = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',}), max_length=100)
-    first_name      = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',}), max_length=100)
-    last_name       = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',}), max_length=100)
-    email           = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control',}))
-    profile_color   = forms.CharField(widget=forms.Select(choices=COLOR_CHOICES, attrs={'class': 'btn btn-danger dropdown-toggle',}))
-    active_course   = forms.CharField(widget=forms.Select(choices=CURRENT_COURSE, attrs={'class': 'btn btn-danger dropdown-toggle',}))
-
-    is_superuser    = forms.CharField(widget=forms.CheckboxInput(attrs={'class': 'form-check', 'type':'hidden'}), max_length=1)
-    is_staff        = forms.CharField(widget=forms.CheckboxInput(attrs={'class': 'form-check', 'type':'hidden'}),)
-    is_active       = forms.CharField(widget=forms.CheckboxInput(attrs={'class': 'form-check', 'type':'hidden'}))
-    groups          = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-conrtol', 'type': 'hidden'}))
-    password     = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control','type':'hidden'}))
-    date_joined     = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control','type':'read-only'}))
-    last_login      = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control','type':'read-only'}))
+class EditProfileForm(UserChangeForm):
+    email           = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'type':'optional',}))
+    first_name      = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control',}))
+    last_name       = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control',}))
+    username        = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', }))
+    last_login      = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control',}))
+    date_joined     = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control',}))
 
 
     class meta:
         model   = User
-        fields  = (
-            'is_active', 
-            'username', 
-            'first_name', 
-            'last_name', 
-            'email', 
-            'profile_color', 
-            'active_course',
-
-        )
-
-
-
+        fields  = ('username', 'first_name', 'last_name', 'email', 'last_login', 'date_joined')

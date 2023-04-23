@@ -101,7 +101,7 @@ nav a {
     <nav class="mNav">
         <div>
             {% if user.is_authenticated %}
-                <div class="dash_board">
+                <div class="dash_board" style="background-color: {{ user.postdash.color }};">
                     <div class="left_nav">
                         <a class="log_o" href="{% url 'homepage' %}">
                             <h1  style="color:black" >NL_Labs | {{ user.username }}</h1>
@@ -121,6 +121,12 @@ nav a {
                             <div>Me_</div>
                         </a>
                     </div>
+                </div>
+                <br/>
+                <div>
+                    <h4 style="background-color: {{ user.postdash.color }};">
+                        Current: {{ user.postdash.author }}
+                    </h4>
                 </div>
             {% else %}
                 <div class="dash_board">

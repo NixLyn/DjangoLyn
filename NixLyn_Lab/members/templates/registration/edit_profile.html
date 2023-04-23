@@ -3,7 +3,7 @@
 
 {% block content %}
 {% load static %}
-<section style="background-image: url('../../static/pics/green_bg_1.jpg');">
+<section style="background-image: url('../../static/pics/green_bg_1.jpg'); background-repeat: no-repeat; background-size: cover;">
     <h1>
         Edit NixLyn_Lab Profile
     </h1>
@@ -18,11 +18,11 @@
                     <div>
                         {{ form }}
                     </div>
-                    <!-- div>
-                        <label>UserName: </label>
-                        <div>{{ form.username }}</div>
-                    </div>
                     <div>
+                        <label>UserColor: </label>
+                        <div>{{ user.postdash.color }}</div>
+                    </div>
+                    <!-- div>
                         <label>FirstName: </label>
                         <div>{{ form.first_name }}</div>
                     </div>

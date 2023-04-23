@@ -1,0 +1,77 @@
+
+Check remote branch version:
+
+```
+git remote -v
+```
+
+Create new branch:
+
+```
+git branch -M <BranchName>
+```
+
+List all local branchs:
+
+```
+git branch --list
+```
+
+Push to Branch:
+
+```
+git push -u origin <BranchName>
+```
+
+Compare Branches:
+
+```
+git checkout <BranchName>
+```
+^ if this goes well:
+
+```
+┌──$ git checkout TestBranch 
+└─>branch 'TestBranch' set up to track 'origin/TestBranch'.
+└─>Switched to a new branch 'TestBranch'
+```
+Then Merge:
+
+```
+┌──$ git merge
+└─Already up to date.
+```
+
+Check merge progress: (If larger)
+
+```
+┌──$git merge --progress
+└─>Already up to date.
+
+```
+
+Now in order merge the branch to Master, you must go into GitHub.com..
+you will see the big green buttons :P :D
+
+After Mergeing (Squash) you can go ahead and delete the branch :)
+
+Then, all members of the Repo will need to:
+
+```
+git pull
+```
+
+Before business can continue as usual :>
+
+
+If you are not intending on using the branch again:
+
+```
+git branch --delete <BranchName>
+```
+
+Else, just use it again for the continual battle :~}
+ 
+
+
+

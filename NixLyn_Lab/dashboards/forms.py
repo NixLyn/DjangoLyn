@@ -10,3 +10,5 @@ class PostDash(forms.ModelForm):
             'author':   forms.Select(attrs={'class': 'form-control', }),
             'color':    forms.Select(attrs={'class': 'form-control',}),
             }
+
+
