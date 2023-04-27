@@ -75,7 +75,7 @@
     <section style="height: 80vh;">
         {% if user.is_authenticated %}
         <div class="head_lab">
-            <h2 style="color:black; margin: 0; padding: 0;">Welcome to your DashBoards</h2>
+            <h2 style="color:black; margin: 0; padding: 0;">Please Set Your Target</h2>
         </div>
             <div class="dash_block">
                 <div class="my_pannel">
@@ -85,18 +85,15 @@
                         <a>-Pannel_4-</a>
                 </div>
                 <div class="rooms">
-                    <a class="red_tag" href="{% url 'redroom' %}">
-                        Red_Room
-                    </a>
-                    <a class="blue_tag" href="{% url 'blueroom' %}">
-                        Blue_Room
-                    </a>
-                    <a class="frankie_s" href="{% url 'frankieslab' %}">
-                        Frankie's Lab
-                    </a>
-                    <a class="rvsb_tag" href="{% url 'rvsb_events' %}">
-                        Red-vs-Blue <br/> Events
-                    </a>
+                    <form class="form-group" method="POST">
+                        {% csrf_token %}
+                        <br/>
+                        {{ form.target }}
+                        <br/>
+
+                        <button>Set Target</button>
+                    </form>
+
                 </div>
             </div>
         {% else %}

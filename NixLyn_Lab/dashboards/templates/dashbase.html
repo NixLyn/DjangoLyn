@@ -124,15 +124,15 @@ nav a {
                 </div>
                 <br/>
                 <div>
-                    <h4 style="background-color: {{ user.postdash.color }};">
-                        Current: {{ user.postdash.author }} | {{ user.postdash.color }}
-                    </h4>
+                    <a href="{% url 'set_target' %}"><h4 style="background-color: {{ user.postdash.color }};">
+                        MyTarget | {{ user.mytarget.target }}
+                    </h4></a>
                 </div>
             {% else %}
                 <div class="dash_board">
                     <div class="left_nav">
                         <a class="log_o" href="{% url 'homepage' %}">
-                            <h1  style="color:black" >NL_Labs |  Welcome </h1>
+                            <h1  style="color:black" >My_Dash |  Welcome </h1>
                         </a>
                     </div>
                     <div class="right_nav">

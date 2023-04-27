@@ -1,19 +1,27 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from .models import PostDash
-from .forms import PostDash
+from django.views.generic import TemplateView, UpdateView
+from .models import PostDash, MyTarget
+from .forms import PostDash, EditTarget
 from django.urls import reverse_lazy
 
 # Create your views here.
 
 
 class DashBoardsView(TemplateView):
-    model           = PostDash
+    model           = MyTarget, PostDash
     template_name   = 'dashboards.html'
 
+class SetTargetView(UpdateView):
+    model           = MyTarget, PostDash
+    form_class      = EditTarget
+    template_name   = 'set_target.html'
+    success_url     = reverse_lazy('dashboards')
+
+    def get_object(self):
+        return self.request.user
 
 class RedRoomView(TemplateView):
-    model           = PostDash
+    model           = PostDash, MyTarget
     template_name   = 'redroom.html'
 
 class BlueRoomView(TemplateView):
@@ -30,5 +38,5 @@ class RvsBView(TemplateView):
 
 
 class RedBenchCMD(TemplateView):
-    model           = PostDash
+    model           = PostDash, PostDash
     template_name   = 'redbench_cmd.html'

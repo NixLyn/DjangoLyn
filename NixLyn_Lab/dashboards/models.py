@@ -32,9 +32,9 @@ class PostDash(models.Model):
 
 class MyTarget(models.Model):
     author      = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    mytarget       = models.CharField(max_length=150, null=True, default='url')
+    target    = models.CharField(max_length=150, null=True, default='url')
     def __str__(self):
-        return  str(self.author)  + " | " + str(self.mytarget)
+        return  str(self.author)  + " | " + str(self.target)
 
 
 

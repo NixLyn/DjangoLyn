@@ -1,0 +1,56 @@
+.mNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: top;
+    background-color: rgb(0, 0, 0);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.logo h1{
+    margin-top: 0;
+    margin-left: 10px;
+    font-size: 2.2rem;
+    color: aliceblue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.logo div{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.dash_board {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dash_board a div{
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    margin: 1px 15px;
+    padding: 5px 5px;
+    color: black;
+    font-size: x-large;
+    border-radius: 0.2rem;
+}
+
+.dash_board a div:hover{
+    background-color: rgb(212, 235, 13);
+    border-top-right-radius: 1.8rem;
+    box-shadow: 2px 2px 2px rgb(255, 255, 255);
+    transition: all 0.4s ease-in-out;
+}
+
